@@ -1,5 +1,5 @@
 # IBM-Coursera-Advanced-Data-Science-Capstone
-### Rodrigo Reyes
+### By: Rodrigo Reyes
 ## Introduction: 
 Welcome to my submission for the Data Science Specialization with IBM. This project, titled "Exchange Rate Prediction of Guatemalan Quetzal," aims to forecast the exchange rate from the Guatemalan Quetzal to the American Dollar for the upcoming week. Utilizing the skills and knowledge acquired throughout the course, I have developed a predictive model to achieve this goal.
 
