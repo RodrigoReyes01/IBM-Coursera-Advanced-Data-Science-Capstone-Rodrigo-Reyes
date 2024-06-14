@@ -250,24 +250,24 @@ This table shows the historical data we used. Each row represents a day, and it 
 1623     0.045351     0.079579     0.066680     0.081884  
 1624     0.045351     0.045937     0.080230     0.067359  
 ```
--Fecha: The date of the observation.
--TCR_1: The actual TCR_1 values.
--TCR_1_scaled: The scaled TCR_1 values, adjusted for training the neural network.
--TCR_1_lag_1 to TCR_1_lag_7: The TCR_1 values from the previous 1 to 7 days, used as features for training the model.
+*Fecha: The date of the observation.
+*TCR_1: The actual TCR_1 values.
+*TCR_1_scaled: The scaled TCR_1 values, adjusted for training the neural network.
+*TCR_1_lag_1 to TCR_1_lag_7: The TCR_1 values from the previous 1 to 7 days, used as features for training the model.
 
 Shapes of X and y:
 X is like a list of all the factors we use to predict (TCR_1), and y is the actual values we want to predict. Here, X has 1618 rows (days) and 7 columns (different factors from previous days), and y has 1618 values.
 ```scss
 (1618, 7), (1618,)
 ```
--X: The feature matrix with 1618 rows (days) and 7 columns (lagged features).
--y: The target vector with 1618 values (TCR_1).
+*X: The feature matrix with 1618 rows (days) and 7 columns (lagged features).
+*y: The target vector with 1618 values (TCR_1).
 
 Shapes of X_train, X_val, y_train, y_val:
 These are just smaller sets of the data that the computer uses to learn. X_train and y_train are what the computer learns from, and X_val and y_val are used to see how well it's learning.
 (1294, 7), (324, 7), (1294,), (324,)
--X_train and y_train: The training set with 1294 samples and 7 features each.
--X_val and y_val: The validation set with 324 samples and 7 features each.
+*X_train and y_train: The training set with 1294 samples and 7 features each.
+*X_val and y_val: The validation set with 324 samples and 7 features each.
 
 Model Training:
 This part shows how the computer learns from the data. It's like when you practice something to get better at it. The computer tries to predict the exchange rate (TCR_1) and gets feedback on how good or bad its predictions are after each try (epoch).
@@ -278,8 +278,8 @@ Epoch 2/20
 41/41 [==============================] - 0s 3ms/step - loss: 0.1198 - mean_squared_error: 0.1198 - val_loss: 0.0380 - val_mean_squared_error: 0.0380
 Epoch 3/20
 ```
--Training and Validation Loss: Indicates the performance of the model on the training and validation datasets. Lower values suggest better performance.
--Epochs: The training process ran for 20 epochs, with loss and mean squared error metrics recorded for each epoch.
+*Training and Validation Loss: Indicates the performance of the model on the training and validation datasets. Lower values suggest better performance.
+*Epochs: The training process ran for 20 epochs, with loss and mean squared error metrics recorded for each epoch.
 
 Mean Squared Error:
 This number tells us how close the computer's predictions are to the actual exchange rates. A lower number means it's making better predictions.
