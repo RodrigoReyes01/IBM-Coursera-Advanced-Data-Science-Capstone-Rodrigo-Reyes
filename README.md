@@ -370,3 +370,10 @@ https://docs.google.com/presentation/d/1j8afXtTIPqyfbLENv59swPRmIIqc1AeX/edit?us
 ### Data Science Peers:
 
 https://docs.google.com/presentation/d/1RL2xWkM2jJaW-r-jukcTP3UfY14TTrpX/edit?usp=sharing&ouid=114712119144930753335&rtpof=true&sd=true
+
+### Video Presentation:
+
+https://docs.google.com/presentation/d/1ufCJ5iJ6-ofTq2qDLjIxQ6wUi9u-0tn4/edit?usp=sharing&ouid=114712119144930753335&rtpof=true&sd=true
+
+## Video
+
