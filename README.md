@@ -223,3 +223,105 @@ if __name__ == "__main__":
 ```
 ## Results:
 ### So how does it look like?
+Processed Data:
+This table shows the historical data we used. Each row represents a day, and it includes the exchange rate (TCR_1) for that day along with some related information.
+```yaml
+          Fecha    TCR_1  TCR_1_scaled  TCR_1_lag_1  TCR_1_lag_2  TCR_1_lag_3  \
+1615 2024-06-03  7.76374      0.004101     0.062953     0.063503     0.064045   
+1616 2024-06-04  7.76850      0.081951     0.000503     0.063503     0.064045   
+1617 2024-06-05  7.76761      0.067395     0.078320     0.001069     0.064045   
+1618 2024-06-06  7.76844      0.080969     0.063770     0.078866     0.001627   
+1619 2024-06-07  7.76638      0.047278     0.077339     0.064320     0.079404   
+1620 2024-06-08  7.76638      0.047278     0.043662     0.077885     0.064862   
+1621 2024-06-09  7.76638      0.047278     0.043662     0.044217     0.078423   
+1622 2024-06-10  7.76241     -0.017651     0.043662     0.044217     0.044764   
+1623 2024-06-11  7.76323     -0.004240    -0.021240     0.044217     0.044764   
+1624 2024-06-12  7.76210     -0.022721    -0.007835    -0.020668     0.044764   
+
+      TCR_1_lag_4  TCR_1_lag_5  TCR_1_lag_6  TCR_1_lag_7  
+1615     0.089619     0.126122     0.063252     0.024438  
+1616     0.064626     0.090194     0.126758     0.063932  
+1617     0.064626     0.065207     0.090842     0.127416  
+1618     0.064626     0.065207     0.065864     0.091513  
+1619     0.002225     0.065207     0.065864     0.066543  
+1620     0.079981     0.002823     0.065864     0.066543  
+1621     0.065443     0.080559     0.003501     0.066543  
+1622     0.079001     0.066024     0.081210     0.004202  
+1623     0.045351     0.079579     0.066680     0.081884  
+1624     0.045351     0.045937     0.080230     0.067359  
+```
+-Fecha: The date of the observation.
+-TCR_1: The actual TCR_1 values.
+-TCR_1_scaled: The scaled TCR_1 values, adjusted for training the neural network.
+-TCR_1_lag_1 to TCR_1_lag_7: The TCR_1 values from the previous 1 to 7 days, used as features for training the model.
+
+Shapes of X and y:
+X is like a list of all the factors we use to predict (TCR_1), and y is the actual values we want to predict. Here, X has 1618 rows (days) and 7 columns (different factors from previous days), and y has 1618 values.
+```scss
+(1618, 7), (1618,)
+```
+-X: The feature matrix with 1618 rows (days) and 7 columns (lagged features).
+-y: The target vector with 1618 values (TCR_1).
+
+Shapes of X_train, X_val, y_train, y_val:
+These are just smaller sets of the data that the computer uses to learn. X_train and y_train are what the computer learns from, and X_val and y_val are used to see how well it's learning.
+(1294, 7), (324, 7), (1294,), (324,)
+-X_train and y_train: The training set with 1294 samples and 7 features each.
+-X_val and y_val: The validation set with 324 samples and 7 features each.
+
+Model Training:
+This part shows how the computer learns from the data. It's like when you practice something to get better at it. The computer tries to predict the exchange rate (TCR_1) and gets feedback on how good or bad its predictions are after each try (epoch).
+```bash
+Epoch 1/20
+41/41 [==============================] - 1s 8ms/step - loss: 0.3665 - mean_squared_error: 0.3665 - val_loss: 0.0429 - val_mean_squared_error: 0.0429
+Epoch 2/20
+41/41 [==============================] - 0s 3ms/step - loss: 0.1198 - mean_squared_error: 0.1198 - val_loss: 0.0380 - val_mean_squared_error: 0.0380
+Epoch 3/20
+```
+-Training and Validation Loss: Indicates the performance of the model on the training and validation datasets. Lower values suggest better performance.
+-Epochs: The training process ran for 20 epochs, with loss and mean squared error metrics recorded for each epoch.
+
+Mean Squared Error:
+This number tells us how close the computer's predictions are to the actual exchange rates. A lower number means it's making better predictions.
+```
+0.07824650451860782
+```
+Mean Squared Error (MSE): A metric used to evaluate the model's performance. A lower MSE indicates better predictive accuracy.
+
+Next week's predictions:
+These are the computer's guesses for what the exchange rate will be over the next week. It uses what it learned from the historical data to make these predictions.
+```yaml
+Date: 2024-06-13, Predicted TCR_1: 7.7677130699157715
+Date: 2024-06-14, Predicted TCR_1: 7.767287254333496
+Date: 2024-06-15, Predicted TCR_1: 7.767825603485107
+Date: 2024-06-16, Predicted TCR_1: 7.7689690589904785
+Date: 2024-06-17, Predicted TCR_1: 7.768828392028809
+Date: 2024-06-18, Predicted TCR_1: 7.769726753234863
+Date: 2024-06-19, Predicted TCR_1: 7.768404483795166
+```
+Predictions: The model's forecasted TCR_1 values for the next seven days, starting from June 13, 2024, to June 19, 2024.
+
+### Plots:
+Plots would be generated to visually compare the historical data and the predicted values, providing a visual representation of the model's forecasting performance.
+
+All Data:
+![AllOriginalData](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/85575774-9542-4de9-af72-afc8df514a77)
+In this plot we can see all the Data that is in the Data Set.
+
+Last Week:
+![LastWeekData](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/fd6b185b-08b0-446b-b1a6-cb1e07f33e72)
+In this plot we show what last weeks TCR looked like more closely.
+
+Next Week:
+![NextWeekPredictions](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/288e3dd7-a56e-47b2-9b6c-6cef97b51fb2)
+In this plot we see how would our prediction look.
+
+All Data Including Prediction:
+![AllDataIncluded](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/59cd37ae-2462-4418-b326-92a93e1d109a)
+In this plot we can see now how all the past data looks like with the new data added in, you can see that it makes sense and looks somewhat acurrate.
+
+![ScatterPlot](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/c9c2d8bb-6e10-4ac3-be66-22c1fb7011b4)
+In this one you can have a closer look at where are the Dots Plotted.
+
+
+
