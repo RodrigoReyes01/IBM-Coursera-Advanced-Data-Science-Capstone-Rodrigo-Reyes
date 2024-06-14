@@ -305,22 +305,41 @@ Predictions: The model's forecasted TCR_1 values for the next seven days, starti
 Plots would be generated to visually compare the historical data and the predicted values, providing a visual representation of the model's forecasting performance.
 
 All Data:
+
+
 ![AllOriginalData](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/85575774-9542-4de9-af72-afc8df514a77)
+
+
 In this plot we can see all the Data that is in the Data Set.
 
 Last Week:
+
+
 ![LastWeekData](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/fd6b185b-08b0-446b-b1a6-cb1e07f33e72)
+
+
 In this plot we show what last weeks TCR looked like more closely.
 
 Next Week:
+
+
 ![NextWeekPredictions](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/288e3dd7-a56e-47b2-9b6c-6cef97b51fb2)
+
+
 In this plot we see how would our prediction look.
 
 All Data Including Prediction:
+
+
 ![AllDataIncluded](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/59cd37ae-2462-4418-b326-92a93e1d109a)
+
+
 In this plot we can see now how all the past data looks like with the new data added in, you can see that it makes sense and looks somewhat acurrate.
 
+
 ![ScatterPlot](https://github.com/RodrigoReyes01/IBM-Coursera-Advanced-Data-Science-Capstone-Rodrigo-Reyes/assets/71049819/c9c2d8bb-6e10-4ac3-be66-22c1fb7011b4)
+
+
 In this one you can have a closer look at where are the Dots Plotted.
 
 
