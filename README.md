@@ -250,10 +250,10 @@ This table shows the historical data we used. Each row represents a day, and it 
 1623     0.045351     0.079579     0.066680     0.081884  
 1624     0.045351     0.045937     0.080230     0.067359  
 ```
-*Fecha: The date of the observation.
-*TCR_1: The actual TCR_1 values.
-*TCR_1_scaled: The scaled TCR_1 values, adjusted for training the neural network.
-*TCR_1_lag_1 to TCR_1_lag_7: The TCR_1 values from the previous 1 to 7 days, used as features for training the model.
+* Fecha: The date of the observation.
+* TCR_1: The actual TCR_1 values.
+* TCR_1_scaled: The scaled TCR_1 values, adjusted for training the neural network.
+* TCR_1_lag_1 to TCR_1_lag_7: The TCR_1 values from the previous 1 to 7 days, used as features for training the model.
 
 Shapes of X and y:
 X is like a list of all the factors we use to predict (TCR_1), and y is the actual values we want to predict. Here, X has 1618 rows (days) and 7 columns (different factors from previous days), and y has 1618 values.
