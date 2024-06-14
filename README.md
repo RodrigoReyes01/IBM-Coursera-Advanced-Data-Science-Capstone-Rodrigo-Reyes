@@ -23,8 +23,9 @@ from pyspark.sql import SparkSession
 ```
 Next, we initialize a Spark session. This helps in efficiently handling large datasets that might not fit into memory:
 ```Initialize Spark
-```javascript I'm A tab
-console.log('Code Tab A');
+```spark = SparkSession.builder \
+    .appName("Capstone Project") \
+    .getOrCreate()
 ```
 Then, we load and explore our data. The initial_data_exploration function reads the CSV file, filters out rows with missing dates, and selects the relevant columns:
 ```Data Exploration
