@@ -22,13 +22,13 @@ from sklearn.metrics import mean_squared_error
 from pyspark.sql import SparkSession
 ```
 Next, we initialize a Spark session. This helps in efficiently handling large datasets that might not fit into memory:
-``` Initialize Spark
+```Initialize Spark
 spark = SparkSession.builder \
     .appName("Capstone Project") \
     .getOrCreate()
 ```
 Then, we load and explore our data. The initial_data_exploration function reads the CSV file, filters out rows with missing dates, and selects the relevant columns:
-``` Data Exploration
+```Data Exploration
 def initial_data_exploration(data_path):
     df = spark.read.csv(data_path, header=True, inferSchema=True, sep=",", multiLine=True)
     df = df.filter(df['Fecha'].isNotNull())
@@ -36,13 +36,13 @@ def initial_data_exploration(data_path):
     return df
 ```
 In the etl_process function, we clean the data by dropping rows with missing values.
-``` ETL
+```ETL
 def etl_process(df):
     df_clean = df.dropna()
     return df_clean
 ```
 We then create features for our model in the feature_creation function. This involves converting the DataFrame to a Pandas DataFrame, scaling the TCR_1 values, creating lag features, and scaling these lag features:
-``` Feature Creation
+```Feature Creation
 def feature_creation(df):
     pd_df = df.toPandas()
     pd_df['Fecha'] = pd.to_datetime(pd_df['Fecha'], format='%d/%m/%Y')
@@ -65,7 +65,7 @@ def feature_creation(df):
     return pd_df, scaler, tcr_scaler
 ```
 The define_model function defines a neural network model using TensorFlow's Keras API:
-``` Define Model
+```Define Model
 def define_model(input_shape):
     model = Sequential()
     model.add(Dense(64, input_shape=(input_shape,), activation='relu'))
@@ -76,20 +76,20 @@ def define_model(input_shape):
     return model
 ```
 We train the model using the train_model function, which also validates the model on a validation set:
-``` Train model
+```Train model
 def train_model(model, X_train, y_train, X_val, y_val, epochs=20, batch_size=32):
     history = model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=epochs, batch_size=batch_size)
     return history
 ```
 The evaluate_model function evaluates the trained model on the test set:
-``` Evaluate Model
+```Evaluate Model
 def evaluate_model(model, X_test, y_test):
     predictions = model.predict(X_test)
     mse = mean_squared_error(y_test, predictions)
     print(f"Mean Squared Error: {mse}")
 ```
 To predict the TCR_1 values for the next week, we use the predict_next_week function, which iteratively generates predictions for the next 7 days:
-``` Predict next week
+```Predict next week
 def predict_next_week(model, last_week_data, scaler, feature_columns, tcr_scaler):
     predictions = []
     for _ in range(7):
@@ -109,7 +109,7 @@ def predict_next_week(model, last_week_data, scaler, feature_columns, tcr_scaler
     return predictions
 ```
 We also include functions to plot the data and the predictions:
-``` Plotting
+```Plotting
 # Function to plot the data
 def plot_data(processed_data, next_week_predictions, next_week_dates):
     plt.figure(figsize=(15, 10))
@@ -165,7 +165,7 @@ def plot_scatter_data(processed_data, next_week_predictions, next_week_dates):
     plt.show()
 ```
 To run the pipeline, we load the data, process it, train the model, evaluate it, and make predictions for the next week:
-``` Pipeline
+```Pipeline
 if __name__ == "__main__":
     data_path = "/content/historico_rango.csv"  # Change the path to the uploaded file
 
